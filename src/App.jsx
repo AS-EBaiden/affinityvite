@@ -13,8 +13,8 @@ const App = () => {
       <GlobalStyle />
 
       <Routes>
-        <Route path="/*" element={<ContainerSection />} />
-        <Route path="/dashboard" element={<Sample />} />
+        <Route path="/affinityvite/*" element={<ContainerSection />} />
+        <Route path="/affinityvite/dashboard" element={<Sample />} />
       </Routes>
     </AffinityProvider>
   );
