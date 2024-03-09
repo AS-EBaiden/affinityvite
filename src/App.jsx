@@ -1,15 +1,21 @@
 import { AffinityProvider, GlobalStyle } from "@allied-solutions/affinity";
+import { Routes, Route } from "react-router-dom";
 
 import React from "react";
 
 import theme from "./theme";
 import ContainerSection from "./ContainerSection";
+import Sample from "./pages/Sample";
+
 const App = () => {
-  const [value, setValue] = React.useState(5);
   return (
     <AffinityProvider theme={theme}>
       <GlobalStyle />
-      <ContainerSection />
+
+      <Routes>
+        <Route path="/*" element={<ContainerSection />} />
+        <Route path="/dashboard" element={<Sample />} />
+      </Routes>
     </AffinityProvider>
   );
 };
