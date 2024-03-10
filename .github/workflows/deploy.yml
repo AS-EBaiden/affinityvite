@@ -1,4 +1,3 @@
-
 name: Deploy to GitHub Pages
 
 on:
@@ -13,9 +12,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
-      - name: Authenticate with npm
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+      - name: Set up npm config
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > $HOME/.npmrc
+          echo "@allied-solutions:registry=https://npm.pkg.github.com" >> $HOME/.npmrc
+          echo "always-auth=true" >> $HOME/.npmrc
 
       - name: Install dependencies and build
         run: |
           npm install
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
