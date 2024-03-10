@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies and build
         run: |
           npm install # or any other command to install dependencies
-          npm run deploy # or any other command to build your project
+          npm run build # or any other command to build your project
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
