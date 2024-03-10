@@ -21,4 +21,4 @@ jobs:
 
       - name: Install dependencies and build with yarn
         run: |
-          yarn install --frozen-lockfile
+          npm install
