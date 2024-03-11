@@ -8,11 +8,8 @@ import ContainerSection from "./ContainerSection";
 import Sample from "./pages/Sample";
 
 const App = () => {
-  let startingEndpoint =
-    process.env.NODE_ENV === "production" &&
-    window.location.hostname.startsWith("project.github.io")
-      ? "/affinityvite/"
-      : "/";
+  let startingEndpoint = "/affinityvite/";
+
   return (
     <AffinityProvider theme={theme}>
       <GlobalStyle />
