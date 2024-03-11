@@ -1,25 +1,23 @@
-import { InputGroup, Box } from '@allied-solutions/affinity'
-import React from 'react'
+import { InputGroup, Box } from "@allied-solutions/affinity";
+import React from "react";
 
 const Sample = () => {
-  const [value, setValue] = React.useState(5)
+  const [value, setValue] = React.useState(5);
   return (
     <div
       style={{
-        height: '100vh',
-        width: '100vw',
-        background: 'white',
-        marginTop: '100px',
-        marginLeft: '100px',
+        height: "100vh",
+        width: "100vw",
+        background: "white",
+        marginTop: "100px",
+        marginLeft: "100px",
       }}
     >
       <Box maxWidth="400px">
-        <InputGroup isValid={'success'}>
-          <InputGroup.Input id="input" placeholder="I am a text input" />
-        </InputGroup>
+        <h2>this is a dashboard but a fake one</h2>
       </Box>
     </div>
-  )
-}
+  );
+};
 
-export default Sample
+export default Sample;
