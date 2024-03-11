@@ -12,12 +12,7 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base:
-    process.env.NODE_ENV === "production" &&
-    process.env.URL &&
-    process.env.URL.startsWith("https://project.github.io")
-      ? "/affinityvite/"
-      : "/",
+  base: process.env.NODE_ENV === "production" ? "/affinityvite/" : "/",
   // base:
   //   process.env.NODE_ENV === "production" &&
   //   window.location.hostname.startsWith("project.github.io")
