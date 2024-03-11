@@ -9,10 +9,7 @@ import Sample from "./pages/Sample";
 
 const App = () => {
   let startingEndpoint =
-    process.env.NODE_ENV === "production" &&
-    window.location.hostname.startsWith("project.github.io")
-      ? "/affinityvite/"
-      : "/";
+    process.env.NODE_ENV === "production" ? "/affinityvite/" : "/";
   return (
     <AffinityProvider theme={theme}>
       <GlobalStyle />
