@@ -25,7 +25,11 @@ export const StyledBtn = styled(ButtonGroup.Button)`
   font-weight: 500 !important;
   text-decoration: unset !important;
 `;
-const LoginForm = ({ passwordVisible, setPasswordVisible }) => {
+const LoginForm = ({
+  passwordVisible,
+  setPasswordVisible,
+  startingEndpoint,
+}) => {
   const location = useNavigate();
 
   return (
@@ -49,7 +53,7 @@ const LoginForm = ({ passwordVisible, setPasswordVisible }) => {
           await sleep(2000);
           // submit(values, { method: "post" });
           if (values.password === "ball") {
-            location("/dashboard");
+            location(`${startingEndpoint}dashboard`);
           }
         }}
       >
@@ -107,7 +111,7 @@ const LoginForm = ({ passwordVisible, setPasswordVisible }) => {
                   </ButtonGroup.Button>
                   <StyledBtn
                     as={Link}
-                    to="/forgot"
+                    to={`${startingEndpoint}forgot`}
                     id="buttongroup-forgot-password"
                     size="sm"
                     style={{

@@ -9,7 +9,6 @@ import Sample from "./pages/Sample";
 
 const App = () => {
   let startingEndpoint = "/affinityvite/";
-
   return (
     <AffinityProvider theme={theme}>
       <GlobalStyle />

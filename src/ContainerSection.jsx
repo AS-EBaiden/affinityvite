@@ -118,7 +118,7 @@ export default function ContainerElement({ startingEndpoint }) {
         >
           <NavLink
             as={Link}
-            to="/dashboard"
+            to={`${startingEndpoint}dashboard`}
             id="NavLink--Terms"
             className="nav-item"
             style={{ padding: "0px" }}
@@ -127,7 +127,7 @@ export default function ContainerElement({ startingEndpoint }) {
           </NavLink>
           <NavLink
             as={Link}
-            to="/dashboard"
+            to={`${startingEndpoint}dashboard`}
             id="NavLink--Conditions"
             className="nav-item"
             style={{ paddingTop: "0px", paddingBottom: "0px" }}
@@ -175,19 +175,29 @@ export default function ContainerElement({ startingEndpoint }) {
           </Example>
           <Box>
             <Routes>
-              <Route path={`${startingEndpoint}`}>
+              <Route path={`/`}>
                 <Route
                   index
                   element={
                     <LoginForm
+                      startingEndpoint={startingEndpoint}
                       passwordVisible={passwordVisible}
                       setPasswordVisible={setPasswordVisible}
                     />
                   }
                 />
-                <Route path="forgot/*" element={<Forgot />} />
-                <Route path="/emailsent" element={<EmailSent />} />
-                <Route path="newpassword" element={<NewPassword />} />
+                <Route
+                  path="/forgot/"
+                  element={<Forgot startingEndpoint={startingEndpoint} />}
+                />
+                <Route
+                  path="/emailsent"
+                  element={<EmailSent startingEndpoint={startingEndpoint} />}
+                />
+                <Route
+                  path="newpassword"
+                  element={<NewPassword startingEndpoint={startingEndpoint} />}
+                />
               </Route>
             </Routes>
           </Box>

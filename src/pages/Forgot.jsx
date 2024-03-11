@@ -1,24 +1,32 @@
-import React from 'react'
-import * as yup from 'yup'
-import * as Cherr from 'react-router-dom'
-import { Link, useNavigate } from 'react-router-dom'
-import { Box, P, H2, FormGroup, sleep, SubmitButton, ButtonGroup } from '@allied-solutions/affinity'
-import { Form, Formik } from 'formik'
-import { StyledBtn } from './LoginForm'
+import React from "react";
+import * as yup from "yup";
+import * as Cherr from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Box,
+  P,
+  H2,
+  FormGroup,
+  sleep,
+  SubmitButton,
+  ButtonGroup,
+} from "@allied-solutions/affinity";
+import { Form, Formik } from "formik";
+import { StyledBtn } from "./LoginForm";
 
-const Forgot = () => {
-  let location = useNavigate()
+const Forgot = ({ startingEndpoint }) => {
+  let location = useNavigate();
   return (
     <Formik
       initialValues={{
-        username: '', // key must match `id` of `FormGroup`
+        username: "", // key must match `id` of `FormGroup`
       }}
       validationSchema={yup.object().shape({
-        username: yup.string().required('Please fill out this field.'),
+        username: yup.string().required("Please fill out this field."),
       })}
       onSubmit={async (values, formProps) => {
-        await sleep(2000)
-        location('/emailsent')
+        await sleep(2000);
+        location(`${startingEndpoint}emailsent`);
       }}
     >
       {(formProps) => {
@@ -29,18 +37,22 @@ const Forgot = () => {
                 Reset Password
               </H2>
               <P textAlign="left" typeStyle="bodySmall" mb={10}>
-                Please enter the email address associated with your account to receive instructions on how to reset your
-                password.
+                Please enter the email address associated with your account to
+                receive instructions on how to reset your password.
               </P>
               <FormGroup id="username" required>
                 <FormGroup.Label>Username</FormGroup.Label>
-                <FormGroup.InputGroup size={'md'}>
+                <FormGroup.InputGroup size={"md"}>
                   <FormGroup.InputGroup.Input placeholder="I am a text input" />
                 </FormGroup.InputGroup>
                 <FormGroup.Caption />
               </FormGroup>
 
-              <ButtonGroup stretch display="grid !important" justifyContent="unset">
+              <ButtonGroup
+                stretch
+                display="grid !important"
+                justifyContent="unset"
+              >
                 <ButtonGroup.Button
                   id="SendEmail_ButtonGroup--submit"
                   as={SubmitButton}
@@ -51,12 +63,12 @@ const Forgot = () => {
                 </ButtonGroup.Button>
                 <StyledBtn
                   as={Link}
-                  to="/"
+                  to={`${startingEndpoint}`}
                   id="buttongroup-forgot-password"
                   size="sm"
                   style={{
-                    marginLeft: 'unset',
-                    marginTop: '26px',
+                    marginLeft: "unset",
+                    marginTop: "26px",
                   }}
                 >
                   Back to CenterPoint sign in
@@ -64,10 +76,10 @@ const Forgot = () => {
               </ButtonGroup>
             </Box>
           </Form>
-        )
+        );
       }}
     </Formik>
-  )
-}
+  );
+};
 
-export default Forgot
+export default Forgot;
