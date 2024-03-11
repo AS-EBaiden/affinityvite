@@ -8,13 +8,21 @@ import ContainerSection from "./ContainerSection";
 import Sample from "./pages/Sample";
 
 const App = () => {
+  let startingEndpoint =
+    process.env.NODE_ENV === "production" &&
+    window.location.hostname.startsWith("project.github.io")
+      ? "/affinityvite/"
+      : "/";
   return (
     <AffinityProvider theme={theme}>
       <GlobalStyle />
 
       <Routes>
-        <Route path="/affinityvite/*" element={<ContainerSection />} />
-        <Route path="/affinityvite/dashboard" element={<Sample />} />
+        <Route
+          path={`${startingEndpoint}*`}
+          element={<ContainerSection startingEndpoint={startingEndpoint} />}
+        />
+        <Route path={`${startingEndpoint}dashboard`} element={<Sample />} />
       </Routes>
     </AffinityProvider>
   );

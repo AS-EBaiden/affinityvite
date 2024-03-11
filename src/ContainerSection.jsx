@@ -63,7 +63,7 @@ const StyledFlexCol = styled(Flex.Col)`
 //   max-width: unset !important;
 // }
 
-export default function ContainerElement() {
+export default function ContainerElement({ startingEndpoint }) {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
 
   return (
@@ -175,7 +175,7 @@ export default function ContainerElement() {
           </Example>
           <Box>
             <Routes>
-              <Route path="/">
+              <Route path={`${startingEndpoint}`}>
                 <Route
                   index
                   element={
