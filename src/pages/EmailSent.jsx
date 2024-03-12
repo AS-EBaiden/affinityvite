@@ -1,6 +1,6 @@
 import React from "react";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Anchor,
   Box,
@@ -10,9 +10,13 @@ import {
   ButtonAnchor,
   ButtonUnstyled,
   Span,
+  Modal,
+  Button,
+  useSessionTimer,
 } from "@allied-solutions/affinity";
 import styled from "styled-components";
 import { ArrowLeft } from "@allied-solutions/affinity-react-icons/dist/16px";
+import { IdleTimeout } from "../components/IdleTimeout";
 const StyledBtn = styled(ButtonGroup.Button)`
   color: pink;
   @media screen and (max-height: 600px) {
@@ -24,8 +28,38 @@ const StyledAnchorLink = styled(Anchor)`
 `;
 const EmailSent = ({ startingEndpoint }) => {
   const [value, setValue] = React.useState(5);
+  const [isOpen, setIsOpen] = React.useState(false);
+  let location = useNavigate();
+
+  const sessionTimer = useSessionTimer({
+    expireSessionFn: () => Promise.resolve(console.log("session expired")), // must return a Promise
+    extendSessionFn: () => Promise.resolve(console.log("session extended")), // must return a Promise
+    sessionDuration: 3,
+    warningThreshold: 40,
+  });
   return (
     <>
+      <>
+        <IdleTimeout
+          {...sessionTimer}
+          logoutButtonProps={{
+            onClick: () => {
+              console.log("logged out");
+              sessionTimer.handleExpireSession(); // may not call this here, this is just for the example
+            },
+          }}
+          loginButtonProps={{
+            onClick: () => {
+              // windows.location(`${startingEndpoint}newpassword`);
+              sessionTimer.handleExtendSession(); // definitely wouldn't call this here, this is just for the example
+              setTimeout(() => {
+                location(`${startingEndpoint}newpassword`);
+              }, 200);
+            },
+          }}
+        />
+        {/* Time remaining: {sessionTimer.timeRemaining} seconds */}
+      </>
       <H2 textAlign="left" typeStyle="h5">
         Email Sent
       </H2>
