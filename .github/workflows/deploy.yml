@@ -1,4 +1,4 @@
-name: Install dependencies and build
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -6,24 +6,18 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      issues: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Append to .npmrc
+      
+      - name: Set up npm config
         run: |
-          echo "@username:registry=https://npm.pkg.github.com/" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --check-files
-
-      - name: Build
-        run: yarn build
+            echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+      - name: Install dependencies and build with yarn
+        run: |
+          npm install
