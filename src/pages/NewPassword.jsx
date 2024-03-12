@@ -60,7 +60,7 @@ const NewPassword = ({
           await sleep(2000);
           formProps.setStatus("success");
           if (values.password === "ball") {
-            location(`${startingEndpoint}dashboard`);
+            location(`/dashboard`);
           }
         }}
       >

@@ -118,7 +118,7 @@ export default function ContainerElement({ startingEndpoint }) {
         >
           <NavLink
             as={Link}
-            to={`${startingEndpoint}dashboard`}
+            to={`dashboard`}
             id="NavLink--Terms"
             className="nav-item"
             style={{ padding: "0px" }}
@@ -127,7 +127,7 @@ export default function ContainerElement({ startingEndpoint }) {
           </NavLink>
           <NavLink
             as={Link}
-            to={`${startingEndpoint}dashboard`}
+            to={`dashboard`}
             id="NavLink--Conditions"
             className="nav-item"
             style={{ paddingTop: "0px", paddingBottom: "0px" }}
@@ -187,19 +187,48 @@ export default function ContainerElement({ startingEndpoint }) {
                   }
                 />
                 <Route
-                  path="/forgot/"
-                  element={<Forgot startingEndpoint={startingEndpoint} />}
-                />
-                <Route
                   path="/emailsent"
                   element={<EmailSent startingEndpoint={startingEndpoint} />}
                 />
+                <Route
+                  path="/forgot"
+                  element={<Forgot startingEndpoint={startingEndpoint} />}
+                />
+
                 <Route
                   path="newpassword"
                   element={<NewPassword startingEndpoint={startingEndpoint} />}
                 />
               </Route>
             </Routes>
+
+            {/* <Routes>
+              <Route path={`/`}>
+                <Route
+                  index
+                  element={
+                    <LoginForm
+                      startingEndpoint={startingEndpoint}
+                      passwordVisible={passwordVisible}
+                      setPasswordVisible={setPasswordVisible}
+                    />
+                  }
+                />
+                <Route
+                  path="/forgot"
+                  element={<Forgot startingEndpoint={startingEndpoint} />}
+                />
+                <Route
+                  path="/emailsent"
+                  element={<EmailSent startingEndpoint={startingEndpoint} />}
+                />
+
+                <Route
+                  path="newpassword"
+                  element={<NewPassword startingEndpoint={startingEndpoint} />}
+                />
+              </Route>
+            </Routes> */}
           </Box>
         </Box>
       </StyledFlexCol>

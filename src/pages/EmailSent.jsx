@@ -50,15 +50,13 @@ const EmailSent = ({ startingEndpoint }) => {
           }}
           loginButtonProps={{
             onClick: () => {
-              // windows.location(`${startingEndpoint}newpassword`);
               sessionTimer.handleExtendSession(); // definitely wouldn't call this here, this is just for the example
               setTimeout(() => {
-                location(`${startingEndpoint}newpassword`);
+                location(`/newpassword`);
               }, 200);
             },
           }}
         />
-        {/* Time remaining: {sessionTimer.timeRemaining} seconds */}
       </>
       <H2 textAlign="left" typeStyle="h5">
         Email Sent
@@ -71,7 +69,7 @@ const EmailSent = ({ startingEndpoint }) => {
         Didn’t receive the email? That’s ok, click{" "}
         <StyledAnchorLink
           as={Link}
-          to={`${startingEndpoint}newpassword`}
+          to={`/newpassword`}
           typeStyle="caption"
           fontWeight="500"
           color="blue"
@@ -82,7 +80,7 @@ const EmailSent = ({ startingEndpoint }) => {
         <StyledAnchorLink
           textDecoration="none"
           as={Link}
-          to={`${startingEndpoint}newpassword`}
+          to={`/newpassword`}
           typeStyle="caption"
           fontWeight="500"
           color="blue"
@@ -101,7 +99,7 @@ const EmailSent = ({ startingEndpoint }) => {
           id={`EmailSent_ButtonGroup--submit`}
           rounded
           forwardedAs={Link}
-          to={`${startingEndpoint}`}
+          to={`/`}
           iconPos="left"
           icon={ArrowLeft}
           size="md"

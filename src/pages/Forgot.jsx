@@ -26,7 +26,7 @@ const Forgot = ({ startingEndpoint }) => {
       })}
       onSubmit={async (values, formProps) => {
         await sleep(2000);
-        location(`${startingEndpoint}emailsent`);
+        location(`/emailsent`);
       }}
     >
       {(formProps) => {
@@ -63,7 +63,7 @@ const Forgot = ({ startingEndpoint }) => {
                 </ButtonGroup.Button>
                 <StyledBtn
                   as={Link}
-                  to={`${startingEndpoint}`}
+                  to={`/`}
                   id="buttongroup-forgot-password"
                   size="sm"
                   style={{

@@ -53,7 +53,7 @@ const LoginForm = ({
           await sleep(2000);
           // submit(values, { method: "post" });
           if (values.password === "ball") {
-            location(`${startingEndpoint}dashboard`);
+            location(`/dashboard`);
           }
         }}
       >
@@ -111,7 +111,7 @@ const LoginForm = ({
                   </ButtonGroup.Button>
                   <StyledBtn
                     as={Link}
-                    to={`${startingEndpoint}forgot`}
+                    to={`forgot`}
                     id="buttongroup-forgot-password"
                     size="sm"
                     style={{
