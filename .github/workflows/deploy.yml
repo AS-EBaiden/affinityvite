@@ -20,4 +20,4 @@ jobs:
             echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
       - name: Install dependencies and build with yarn
         run: |
-          npm install @allied-solutions/affinity@9.2.0
+          npm install https://github.com/allied-solutions/affinity@9.2.0
