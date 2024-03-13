@@ -20,7 +20,7 @@ jobs:
             echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_REGISTRY_PACKAGES }}" > ~/.npmrc
       - name: Install dependencies and build with npm
         run: |
-          npm install @allied-solutions/affinity@9.2.0
+          npm install
         
 
             
