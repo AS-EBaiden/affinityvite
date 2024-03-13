@@ -1,5 +1,7 @@
 import { InputGroup, Box } from "@allied-solutions/affinity";
 import React from "react";
+import { Check } from "@allied-solutions/affinity-react-icons/dist/16px";
+import Wee from "../components/Navigation";
 
 const Sample = () => {
   const [value, setValue] = React.useState(5);
@@ -18,6 +20,8 @@ const Sample = () => {
           to main
         </h3>
       </Box>
+      <div>Hello there</div>
+      <Wee />
     </div>
   );
 };

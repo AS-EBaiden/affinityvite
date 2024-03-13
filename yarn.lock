@@ -4,7 +4,7 @@
 
 "@allied-solutions/affinity-react-icons@^9.2.0":
   version "9.2.0"
-  resolved "https://npm.pkg.github.com/download/@allied-solutions/affinity-react-icons/9.2.0/ab81e13fef566d68c75de71ba40270a335db06ba"
+  resolved "https://npm.pkg.github.com/download/@allied-solutions/affinity-react-icons/9.2.0/ab81e13fef566d68c75de71ba40270a335db06ba#ab81e13fef566d68c75de71ba40270a335db06ba"
   integrity sha512-qtst9p81T+wBs7L4T/cE0fkS7dpHmMbfHg+HxPQTxOf4WGjiTJR4v/kBIJ7gBi5eX3QagpEvrvCNykgqkHFTfg==
   dependencies:
     "@types/react" "^18.0.14"

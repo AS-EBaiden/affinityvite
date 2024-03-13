@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@allied-solutions/affinity": "^9.2.0",
+    "@allied-solutions/affinity-react-icons": "^9.2.0",
     "@allied-solutions/affinity-sd": "^9.2.0",
     "@react-spring/web": "9",
     "formik": "2",
