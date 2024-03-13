@@ -5,6 +5,9 @@
   "description": "",
   "keywords": [],
   "main": "src/index.tsx",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "@allied-solutions/affinity": "^9.2.0",
     "@allied-solutions/affinity-sd": "^9.2.0",
