@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
-      - name: Set up npm config
+      - name: Set up npm config and authenticate
         run: |
             echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_REGISTRY_PACKAGES }}" > ~/.npmrc
       - name: Install dependencies and build with npm
