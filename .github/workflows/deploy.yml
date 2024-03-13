@@ -18,9 +18,12 @@ jobs:
       - name: Set up npm config and authenticate
         run: |
             echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_REGISTRY_PACKAGES }}" > ~/.npmrc
-      - name: Install dependencies and build
+      - name: Install dependencies
         run: |
           npm install
+          
+      - name: Build
+        run: |
           npm run build
         
 
