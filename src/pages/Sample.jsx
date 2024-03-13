@@ -13,6 +13,10 @@ const Sample = () => {
     >
       <Box maxWidth="400px">
         <h2>this is a dashboard but a fake one</h2>
+        <h3>
+          If you're seeing this, it successfully auto published after i pushed
+          to main
+        </h3>
       </Box>
     </div>
   );
