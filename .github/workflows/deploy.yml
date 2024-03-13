@@ -18,4 +18,7 @@ jobs:
       - name: Set up npm config
         run: |
             echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+            cat ~/.npmrc
+
+            
 
