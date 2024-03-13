@@ -21,7 +21,6 @@ jobs:
       - name: Install dependencies and build with npm
         run: |
           npm install @allied-solutions/affinity@9.2.0
-          npm run build # or any other command to build your project
         
 
             
