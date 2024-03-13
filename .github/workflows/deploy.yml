@@ -18,9 +18,9 @@ jobs:
       - name: Set up npm config
         run: |
             echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_REGISTRY_PACKAGES }}" > ~/.npmrc
-      - name: Install dependencies and build with yarn
+      - name: Install dependencies and build with npm
         run: |
-          npm install https://github.com/allied-solutions/affinity@9.2.0
+          npm install @allied-solutions/affinity@9.2.0
 
         
 
