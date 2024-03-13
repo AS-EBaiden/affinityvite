@@ -6,8 +6,6 @@ const Sample = () => {
   return (
     <div
       style={{
-        height: "100vh",
-        width: "100vw",
         background: "white",
         marginTop: "100px",
         marginLeft: "100px",
