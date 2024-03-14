@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { links } from "../Navigation/SideBarData";
 import logo from "../../assets/CPimg.svg";
 import UserPhoto from "./assets/user-photo.png";
 import "../../components/Navigation/styles/SideBar.css";
 
+import { Collapse } from "@allied-solutions/affinity";
+
 export default function Navigation() {
   const [activeBar, setActiveBar] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const triggerRef = useRef(null);
   return (
     <aside className={`sidebar ${activeBar && "active"}`}>
       <header className="header">

@@ -68,8 +68,10 @@
   }
   
   .sidebar .list-items .item .link:hover {
-    color: var(--dark-blue);
-    background-color: var(--light-blue);
+    /* color: var(--dark-blue); */
+    background-color: #0070B9;
+    color: white;
+    /* background-color: var(--light-blue); */
   }
   
   .sidebar .list-items .item .link .link-icon {

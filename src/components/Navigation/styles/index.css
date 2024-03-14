@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:100, 200, 300,400,500,600,700,800,900");
 
 :root {
   --white: #fffdff;
@@ -23,7 +22,6 @@ html {
 body {
   color: #303030;
   background-color: aliceblue;
-  font-family: "Poppins", sans-serif;
 }
 
 button {
