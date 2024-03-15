@@ -1,11 +1,24 @@
-.sidebar {
+/* .sidebar {
     position: relative;
     width: 25rem;
     height: 100%;
     padding: 3rem 2rem 2rem 2rem;
+    background-color: var(--dark-blue);
     background: linear-gradient(177deg, #1D253F 0.12%, #231D39 99.88%);
-    /* background-color: var(--dark-blue); */
     transition: width 0.3s ease-in-out;
+  } */
+  .sidebar {
+    height: 100%;
+    width: 25rem;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background: linear-gradient(177deg, #1D253F 0.12%, #231D39 99.88%);
+    overflow-x: hidden;
+    transition: width 0.3s ease-in-out;
+    padding: 3rem 2rem 2rem 2rem;
+    z-index: 9999;
   }
   
   .sidebar.active {
@@ -164,5 +177,23 @@
   }
   .sidebar.active .logout-btn .user-name-wrapper {
     opacity: 0;
+  }
+  main {
+    transition: left .5s;
+    padding: 16px;
+  }
+
+  .main-content {
+    margin-left: 0;
+    left: 8rem;
+    position: absolute; 
+}
+
+  
+  .main-content.with-sidebar {
+    margin-left: 0;
+    position: absolute;
+    background: orange;
+    left: 250px;
   }
   

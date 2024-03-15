@@ -1,13 +1,18 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { links } from "../Navigation/SideBarData";
 import logo from "../../assets/CPimg.svg";
 import UserPhoto from "./assets/user-photo.png";
 import "../../components/Navigation/styles/SideBar.css";
+import {
+  CollapseLeft,
+  CollapseRight,
+} from "@allied-solutions/affinity-react-icons/dist/16px";
 
-import { Collapse } from "@allied-solutions/affinity";
+import { ButtonUnstyled, Collapse, Icon } from "@allied-solutions/affinity";
 
-export default function Navigation() {
-  const [activeBar, setActiveBar] = useState(false);
+export default function Navigation({ activeBar, setActiveBar }) {
+  //
+  //   const [activeBar, setActiveBar] = React.useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef(null);
   return (
@@ -22,12 +27,13 @@ export default function Navigation() {
           />
         </figure>
 
-        <button
+        <ButtonUnstyled
+          icon="CollapseLeft"
           className="toggle-sidebar-btn"
           onClick={() => setActiveBar(!activeBar)}
         >
-          |||
-        </button>
+          <Icon src={activeBar ? CollapseRight : CollapseLeft} color="white" />
+        </ButtonUnstyled>
       </header>
 
       <ul className="list-items">
