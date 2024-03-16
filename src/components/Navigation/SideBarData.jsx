@@ -12,32 +12,32 @@ import {
 export const links = [
   {
     title: "Dashboard",
-    icon: <Talk />,
+    icon: Talk,
     link: "#",
   },
   {
     title: "CPI",
-    icon: <Auto1 />,
+    icon: Auto1,
     link: "#",
   },
   {
     title: "Bond",
-    icon: <Success />,
+    icon: Success,
     link: "#",
   },
   {
     title: "Escrow",
-    icon: <Star />,
+    icon: Star,
     link: "#",
   },
   {
     title: "Reports",
-    icon: <TimerOutline />,
+    icon: TimerOutline,
     link: "#",
   },
   {
     title: "Upload",
-    icon: <HeartFilled />,
+    icon: HeartFilled,
     link: "#",
   },
 ];

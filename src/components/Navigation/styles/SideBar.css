@@ -1,14 +1,6 @@
-/* .sidebar {
-    position: relative;
-    width: 25rem;
-    height: 100%;
-    padding: 3rem 2rem 2rem 2rem;
-    background-color: var(--dark-blue);
-    background: linear-gradient(177deg, #1D253F 0.12%, #231D39 99.88%);
-    transition: width 0.3s ease-in-out;
-  } */
+
   .sidebar {
-    height: 100%;
+    /* height: 100%;
     width: 25rem;
     position: fixed;
     z-index: 1;
@@ -18,36 +10,36 @@
     overflow-x: hidden;
     transition: width 0.3s ease-in-out;
     padding: 3rem 2rem 2rem 2rem;
-    z-index: 9999;
+    z-index: 9999; */
   }
   
   .sidebar.active {
-    width: 8rem;
+    /* width: 8rem; */
   }
   
   .sidebar .header {
-    position: relative;
+    /* position: relative;
     display: flex;
     align-items: center;
     height: 4rem;
-    margin-bottom: 3rem;
+    margin-bottom: 3rem; */
   }
   
   .sidebar .header .logo-container {
-    width: 12rem;
-    transition: opacity 0.3s ease-in-out;
+    /* width: 12rem;
+    transition: opacity 0.3s ease-in-out; */
   }
   
   .sidebar.active .header .logo-container {
-    opacity: 0;
+    /* opacity: 0; */
   }
   
   .sidebar .header .logo-container .logo {
-    width: 100%;
+    /* width: 100%; */
   }
   
   .sidebar .header .toggle-sidebar-btn {
-    position: absolute;
+    /* position: absolute;
     top: 0;
     right: 0;
     display: flex;
@@ -58,54 +50,53 @@
     color: var(--light-blue);
     background-color: var(--dark-purple);
     font-size: 2rem;
-    border-radius: var(--rounded-md);
+    border-radius: var(--rounded-md); */
   }
   
   .sidebar .list-items {
-    list-style: none;
+    /* list-style: none; */
   }
   
   .sidebar .list-items .item {
-    position: relative;
-    margin-bottom: 1rem;
+    /* position: relative;
+    margin-bottom: 1rem; */
   }
   
   .sidebar .list-items .item .link {
-    display: flex;
+    /* display: flex;
     align-items: center;
     height: 4rem;
     color: var(--light-blue);
     border-radius: var(--rounded-md);
     text-decoration: none;
-    transition: background-color, color, 0.3s ease-in-out;
+    transition: background-color, color, 0.3s ease-in-out; */
   }
   
   .sidebar .list-items .item .link:hover {
-    /* color: var(--dark-blue); */
-    background-color: #0070B9;
-    color: white;
-    /* background-color: var(--light-blue); */
+    /* background-color: #0070B9;
+    color: white; */
   }
   
   .sidebar .list-items .item .link .link-icon {
-    display: grid;
+    /* display: grid;
     place-content: center;
     min-width: 4rem;
     min-height: 4rem;
-    font-size: 1.6rem;
+    font-size: 1.6rem; */
   }
   
   .sidebar .list-items .item .link .link-name {
-    font-size: 1.3rem;
+    /* font-size: 1.3rem;
     white-space: nowrap;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out; */
   }
   
   .sidebar.active .list-items .item .link .link-name {
-    opacity: 0;
+    /* opacity: 0; */
+    /* color: red */
   }
   
-  .sidebar.active .list-items .item .link:hover ~ .tooltip {
+  /* .sidebar.active .list-items .item .link:hover ~ .tooltip {
     opacity: 1;
     top: 12%;
   }
@@ -138,10 +129,10 @@
     background-color: var(--dark-blue);
     border-radius: var(--rounded-xs);
     transform: rotate(45deg);
-  }
+  } */
   
   .sidebar .logout-btn {
-    position: absolute;
+    /* position: absolute;
     left: 0;
     bottom: 0;
     display: flex;
@@ -151,22 +142,22 @@
     padding: 0.5rem 2rem;
     color: var(--light-blue);
     background-color: var(--dark-purple);
-    white-space: nowrap;
+    white-space: nowrap; */
   }
   
   .sidebar .logout-btn .user-photo-container {
-    min-width: 4rem;
-    height: 4rem;
+    /* min-width: 4rem;
+    height: 4rem; */
   }
   
   .sidebar .logout-btn .user-photo-container .user-photo {
-    width: 100%;
+    /* width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: var(--rounded-sm);
+    border-radius: var(--rounded-sm); */
   }
   
-  .sidebar .logout-btn .user-name-wrapper {
+  /* .sidebar .logout-btn .user-name-wrapper {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -177,10 +168,9 @@
   }
   .sidebar.active .logout-btn .user-name-wrapper {
     opacity: 0;
-  }
-  main {
+  } */
+  /* main {
     transition: left .5s;
-    padding: 16px;
   }
 
   .main-content {
@@ -195,5 +185,5 @@
     position: absolute;
     background: orange;
     left: 250px;
-  }
+  } */
   

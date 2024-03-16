@@ -1,18 +1,24 @@
-import { Box, Tile, ButtonGroup, H2, P } from "@allied-solutions/affinity";
+import {
+  Box,
+  Tile,
+  ButtonGroup,
+  H2,
+  P,
+  Main,
+} from "@allied-solutions/affinity";
 import * as affinity from "@allied-solutions/affinity";
 import React from "react";
 import Navigation from "../components/Navigation";
-import "../components/Navigation/styles/index.css";
 import Header from "../components/Header";
 console.log("affinity", affinity);
 const Heart = () => {
   const [activeBar, setActiveBar] = React.useState(false);
   return (
-    <div className="app">
+    <>
       <Header />
       <Navigation activeBar={activeBar} setActiveBar={setActiveBar} />
 
-      <main
+      <Main
         className={activeBar ? "main-content" : "main-content with-sidebar"}
       >
         <Box>
@@ -118,8 +124,8 @@ const Heart = () => {
             </Tile.Footer>
           </Tile>
         </Box>
-      </main>
-    </div>
+      </Main>
+    </>
   );
 };
 
