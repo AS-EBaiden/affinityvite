@@ -2,9 +2,12 @@ import {
   Box,
   Tile,
   ButtonGroup,
+  ButtonDiv,
+  Button,
   H2,
   P,
   Main,
+  Collapse,
 } from "@allied-solutions/affinity";
 import * as affinity from "@allied-solutions/affinity";
 import React from "react";
@@ -13,9 +16,12 @@ import Header from "../components/Header";
 console.log("affinity", affinity);
 const Heart = () => {
   const [activeBar, setActiveBar] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const triggerRef = React.useRef(null);
+
   return (
     <>
-      <Header />
+      <Header activeBar={activeBar} />
       <Navigation activeBar={activeBar} setActiveBar={setActiveBar} />
 
       <Main
@@ -73,6 +79,35 @@ const Heart = () => {
               nisi voluptate libero dolor harum aspernatur est exercitationem
               deleniti tempore perferendis impedit vitae earum aliquid.
             </P>
+            <div>
+              <>
+                <ButtonDiv
+                  ref={triggerRef}
+                  id="Button--collapseBasicUsage"
+                  onClick={() => setIsOpen((isOpen) => !isOpen)}
+                  mb={4}
+                >
+                  Click to {isOpen ? "collapse" : "expand"}
+                </ButtonDiv>
+
+                <Collapse
+                  id="Collapse--basicUsage"
+                  isOpen={isOpen}
+                  triggerRef={triggerRef}
+                  onHide={() => console.log("hide")}
+                  onHidden={() => console.log("hidden")}
+                  onShow={() => console.log("show")}
+                  onShown={() => console.log("shown")}
+                >
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quas nihil saepe illum voluptates eaque, numquam
+                    voluptatibus minus non ducimus, amet sequi facilis cumque
+                    eum hic officiis laborum repellendus quisquam expedita.
+                  </p>
+                </Collapse>
+              </>
+            </div>
             <Tile.Footer>
               <ButtonGroup justifyContent="space-between">
                 <ButtonGroup.Button

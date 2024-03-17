@@ -14,6 +14,10 @@ export const links = [
     title: "Dashboard",
     icon: Talk,
     link: "#",
+    subList: [
+      { title: "Title1", link: "#" },
+      { title: "Title2", link: "#" },
+    ],
   },
   {
     title: "CPI",
@@ -24,6 +28,7 @@ export const links = [
     title: "Bond",
     icon: Success,
     link: "#",
+    subList: [{ title: "Title1", link: "#" }],
   },
   {
     title: "Escrow",
@@ -39,5 +44,28 @@ export const links = [
     title: "Upload",
     icon: HeartFilled,
     link: "#",
+  },
+];
+
+export const footerLinks = [
+  {
+    title: "Provide Feedback",
+    icon: Talk,
+    link: "#",
+    subList: [
+      { title: "Title1", link: "#" },
+      { title: "Title2", link: "#" },
+    ],
+  },
+  {
+    title: "Support",
+    icon: Auto1,
+    link: "#",
+  },
+  {
+    title: "System Admin",
+    icon: Success,
+    link: "#",
+    subList: [{ title: "Title1", link: "#" }],
   },
 ];

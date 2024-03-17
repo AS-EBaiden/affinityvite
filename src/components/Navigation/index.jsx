@@ -1,14 +1,17 @@
 import React, { useState, useRef } from "react";
-import { links } from "../Navigation/SideBarData";
+import { links, footerLinks } from "../Navigation/SideBarData";
 import logo from "../../assets/CPimg.svg";
 import {
   ChevronDown,
+  ChevronUp,
   CollapseLeft,
   CollapseRight,
 } from "@allied-solutions/affinity-react-icons/dist/16px";
 import {
   Aside,
   Avatar,
+  Box,
+  Button,
   ButtonDiv,
   ButtonUnstyled,
   Collapse,
@@ -35,17 +38,19 @@ const GlobalNavStyle = createGlobalStyle`
     font-size: 62.5% !important;
   }
 
+
+  header,
   main {
     transition: left .5s;
   }
-
-  .main-content {
+.header-content,
+.main-content {
     margin-left: 0;
     left: 8rem;
     position: absolute; 
 }
 
-  
+.header-content.with-sidebar,
   .main-content.with-sidebar {
     margin-left: 0;
     position: absolute;
@@ -166,6 +171,7 @@ const StyledButtonTrigger = styled(ButtonDiv)`
 
 const StyledListItems = styled(Ul)`
   list-style: none;
+  font-weight: 700;
   ${Li} {
     position: relative;
     margin-bottom: 1rem;
@@ -201,9 +207,9 @@ const StyledListItems = styled(Ul)`
 `;
 
 const StyledAccountBtnDiv = styled(ButtonDiv)`
-  position: absolute;
+  /* position: absolute; */
   left: 0;
-  bottom: 0;
+  /* bottom: 0; */
   display: flex;
   align-items: center;
   width: 100%;
@@ -214,7 +220,87 @@ const StyledAccountBtnDiv = styled(ButtonDiv)`
   white-space: nowrap;
 `;
 
+const StyledCollapse = styled(Collapse)`
+  margin-left: 3rem;
+
+  ${(props) => {
+    return (
+      props.activeBar &&
+      css`
+        max-height: 500px; /* Set a maximum height for animation */
+        transition: max-height 0.3s ease-in-out; /* Add transition for smooth animation */
+      `
+    );
+  }}
+`;
+
 export default function Navigation({ activeBar, setActiveBar }) {
+  const triggerRef = React.useRef(null);
+  const [isOpen, setIsOpen] = React.useState(true);
+
+  const [subListVisibility, setSubListVisibility] = useState(
+    links.map((i) => false)
+  );
+  const [activeSublistIndices, setActiveSublistIndices] = useState([]);
+
+  const toggleSubList = (index) => {
+    setSubListVisibility((prevState) => {
+      const newState = [...prevState];
+      newState[index] = !newState[index];
+      return newState;
+    });
+  };
+
+  // Function to toggle the visibility of all sublists for when leaving endpoint
+  const toggleAllSublists = (isVisible) => {
+    setSubListVisibility(links.map(() => isVisible));
+  };
+  const handleStyledIconButtonClick = () => {
+    // If activeBar is false, uncollapse originally collapsed sublists
+    if (!activeBar) {
+      // Find the indices of the currently expanded sublists
+      const expandedIndices = subListVisibility.reduce(
+        (indices, visibility, index) => {
+          if (visibility) {
+            indices.push(index);
+          }
+          return indices;
+        },
+        []
+      );
+
+      // Save the indices of the currently expanded sublists
+      setActiveSublistIndices(expandedIndices);
+
+      // Uncollapse all sublists
+      setSubListVisibility(links.map(() => activeBar));
+      // Toggle the state of activeBar
+      setTimeout(() => {
+        setActiveBar(!activeBar);
+      }, 300);
+    } else {
+      // If activeBar is true, restore the sublists that were expanded before
+      if (activeSublistIndices.length > 0) {
+        const updatedSubListVisibility = subListVisibility.map(
+          (visibility, index) => {
+            // Restore the sublists that were expanded before
+            return activeSublistIndices.includes(index);
+          }
+        );
+
+        // Update the state to restore the previously expanded sublists
+
+        setTimeout(() => {
+          setSubListVisibility(updatedSubListVisibility);
+        }, 300);
+      }
+      // Toggle the state of activeBar
+
+      setActiveBar(!activeBar);
+    }
+  };
+
+  console.log("APPLE", activeBar);
   return (
     <>
       <GlobalNavStyle />
@@ -235,7 +321,10 @@ export default function Navigation({ activeBar, setActiveBar }) {
           <StyledIconButton
             id="toggle-sidebar-btn"
             className="toggle-sidebar-btn"
-            onClick={() => setActiveBar(!activeBar)}
+            onClick={handleStyledIconButtonClick}
+            // onClick={() => {
+            //   setActiveBar(!activeBar), toggleAllSublists(false);
+            // }}
           >
             <Icon
               src={activeBar ? CollapseRight : CollapseLeft}
@@ -243,36 +332,82 @@ export default function Navigation({ activeBar, setActiveBar }) {
             />
           </StyledIconButton>
         </StyledHeader>
+        {/* <button onClick={() => toggleAllSublists(false)}>HAPPY</button> */}
 
         <ThemeProvider theme={{ activeBar: activeBar }}>
           <StyledListItems className="list-items">
-            {links.map(({ title, icon, link }, index) => (
-              <Li key={index} className="item">
-                <StyledButtonTrigger className="link" href={link}>
-                  <Icon src={icon} className="link-icon" />
-
-                  {/* <figure className="link-icon">{icon}</figure> */}
-                  <Span className="link-name">{title}</Span>
+            {links.map((item, index) => (
+              <div key={index} style={{ color: "white" }}>
+                <StyledButtonTrigger onClick={() => toggleSubList(index)}>
+                  <Icon src={item.icon} />
+                  <Span>{item.title}</Span>
+                  {item.subList && (
+                    <StyledSpan activeBar={activeBar}>
+                      <Icon
+                        src={subListVisibility[index] ? ChevronUp : ChevronDown}
+                      />
+                    </StyledSpan>
+                  )}
                 </StyledButtonTrigger>
-                {/* <span className="tooltip">{title}</span> */}
-              </Li>
+                {item.subList && !activeBar && (
+                  <StyledCollapse
+                    // isOpen={false}
+                    isOpen={subListVisibility[index]}
+                    triggerRef={triggerRef}
+                    onHide={() => console.log("hide")}
+                    onHidden={() => console.log("hidden")}
+                    onShow={() => console.log("show")}
+                    onShown={() => console.log("shown")}
+                  >
+                    <ul style={{ listStyle: "none" }}>
+                      {item.subList.map((subItem, subIndex) => (
+                        <StyledButtonTrigger
+                          key={subIndex}
+                          style={{ padding: "0rem 1rem" }}
+                        >
+                          {subItem.title}
+                        </StyledButtonTrigger>
+                      ))}
+                    </ul>
+                  </StyledCollapse>
+                )}
+              </div>
             ))}
           </StyledListItems>
         </ThemeProvider>
 
-        <StyledAccountBtnDiv className="logout-btn">
-          <div
-          // style={{ minWidth: "4rem", height: "4rem" }}
-          >
-            <Avatar>WW</Avatar>
-          </div>
-          <div>
-            <StyledSpanName activeBar={activeBar}>Hello, Waldo</StyledSpanName>
-          </div>
-          <StyledSpan activeBar={activeBar}>
-            <Icon src={ChevronDown} />
-          </StyledSpan>
-        </StyledAccountBtnDiv>
+        <footer style={{ position: "absolute", bottom: 0, right: 0, left: 0 }}>
+          <ThemeProvider theme={{ activeBar: activeBar }}>
+            <StyledListItems
+              className="list-items"
+              style={{ margin: "0 2rem" }}
+            >
+              {footerLinks.map(({ title, icon, link }, index) => (
+                <Li key={index} className="item">
+                  <StyledButtonTrigger className="link" href={link}>
+                    <Icon src={icon} className="link-icon" />
+
+                    <Span className="link-name">{title}</Span>
+                  </StyledButtonTrigger>
+                </Li>
+              ))}
+            </StyledListItems>
+          </ThemeProvider>
+
+          <StyledAccountBtnDiv className="logout-btn">
+            <div>
+              <Avatar>WW</Avatar>
+            </div>
+            <div>
+              <StyledSpanName activeBar={activeBar}>
+                Hello, Waldo
+              </StyledSpanName>
+            </div>
+            <StyledSpan activeBar={activeBar}>
+              <Icon src={ChevronDown} />
+            </StyledSpan>
+          </StyledAccountBtnDiv>
+        </footer>
       </StyledAside>
     </>
   );

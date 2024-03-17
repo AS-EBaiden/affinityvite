@@ -1,21 +1,20 @@
 import React from "react";
 
-export default function Header() {
-  const [search, setSearch] = React.useState("");
+export default function Header({ activeBar }) {
   return (
     <header
+      className={activeBar ? "header-content" : "header-content with-sidebar"}
       style={{
         width: "100%",
-        background: "white",
+        background: "burlywood",
         height: "8rem",
         top: "0",
-        textAlign: "center",
         zIndex: 999,
         marginBottom: "2rem",
         position: "fixed",
       }}
     >
-      <div>hello world</div>
+      <div style={{ textAlign: "left" }}>hello world</div>
     </header>
   );
 }
