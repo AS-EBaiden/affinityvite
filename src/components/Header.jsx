@@ -11,8 +11,8 @@ export default function Header({ activeBar }) {
         // top: "0",
         zIndex: 999,
         // marginBottom: "2rem",
-        // position: "fixed",
-        position: "relative",
+        position: "fixed",
+        // position: "relative",
         padding: "20px",
         boxSizing: "border-box",
       }}
