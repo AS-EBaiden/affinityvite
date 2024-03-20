@@ -299,7 +299,9 @@ export default function Navigation({ activeBar, setActiveBar }) {
       setActiveBar(!activeBar);
     }
   };
-
+  console.log("subvisibility");
+  const triggerFooterRef = React.useRef(null);
+  const [isFooterOpen, setIsFooterOpen] = React.useState(false);
   console.log("APPLE", activeBar);
   return (
     <>
@@ -394,7 +396,15 @@ export default function Navigation({ activeBar, setActiveBar }) {
             </StyledListItems>
           </ThemeProvider>
 
-          <StyledAccountBtnDiv className="logout-btn">
+          <StyledAccountBtnDiv
+            className="logout-btn"
+            ref={triggerFooterRef}
+            id="Button--collapseBasicUsage"
+            onClick={() => {
+              setIsFooterOpen((isFooterOpen) => !isFooterOpen);
+              toggleAllSublists(false);
+            }}
+          >
             <div>
               <Avatar>WW</Avatar>
             </div>
@@ -407,6 +417,25 @@ export default function Navigation({ activeBar, setActiveBar }) {
               <Icon src={ChevronDown} />
             </StyledSpan>
           </StyledAccountBtnDiv>
+          <Collapse
+            color="white"
+            backgroundColor={"#1e1b30"}
+            padding="0px 1rem"
+            id="Collapse--basicUsage"
+            isOpen={isFooterOpen}
+            triggerRef={triggerFooterRef}
+            onHide={() => console.log("hide")}
+            onHidden={() => console.log("hidden")}
+            onShow={() => console.log("show")}
+            onShown={() => console.log("shown")}
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+              alias sed commodi a vero accusamus molestiae quidem excepturi
+              libero animi suscipit deleniti eveniet cupiditate, non odit, et
+              sequi molestias voluptatibus!
+            </p>
+          </Collapse>
         </footer>
       </StyledAside>
     </>
