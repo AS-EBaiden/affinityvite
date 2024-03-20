@@ -43,7 +43,11 @@ const GlobalNavStyle = createGlobalStyle`
   main {
     transition: left .5s;
   }
-.header-content,
+.header-content {
+    margin-left: 0;
+    left: 8rem;
+    /* position: absolute;  */
+}
 .main-content {
     margin-left: 0;
     left: 8rem;
@@ -54,7 +58,7 @@ const GlobalNavStyle = createGlobalStyle`
   .main-content.with-sidebar {
     margin-left: 0;
     position: absolute;
-    background: orange;
+    /* background: orange; */
     left: 250px;
   }
 

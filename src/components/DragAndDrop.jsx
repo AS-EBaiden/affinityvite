@@ -79,7 +79,7 @@ const Grid = ({ children, columns }) => {
         gridGap: 10,
         // maxWidth: "800px",
         // margin: "100px auto",
-        margin: "2rem",
+        // margin: "2rem",
         // display: "flex",
         // flexWrap: "wrap",
         // justifyContent: "space-between",
